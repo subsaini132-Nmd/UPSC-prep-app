@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Student</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+<!-- Header -->
+<header class="bg-indigo-700 text-white shadow-md">
+  <div class="max-w-3xl mx-auto py-4 px-6 flex justify-between items-center">
+    <h1 class="text-xl font-bold">👩‍🎓 UPSC Prep</h1>
+    <a href="/" class="bg-yellow-400 text-black px-3 py-1 rounded-md font-medium hover:bg-yellow-500">
+      🏠 Back to Home
+    </a>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="max-w-3xl mx-auto p-6">
+  <h2 class="text-2xl font-semibold text-gray-800 mb-6">➕ Add New Student</h2>
+
+  <!-- Form Card -->
+  <div class="bg-white shadow-lg rounded-lg p-6 border">
+    <form th:action="@{/students/save}" th:object="${student}" method="post" class="space-y-5">
+
+      <!-- Name Input -->
+      <div>
+        <label class="block text-gray-700 font-medium mb-2">Name:</label>
+        <input type="text" th:field="*{name}"
+               class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+               placeholder="Enter student name" required />
+      </div>
+
+      <!-- Save Button -->
+      <div>
+        <button type="submit"
+                class="w-full bg-indigo-600 text-white py-2 rounded-lg font-medium hover:bg-indigo-700 transition">
+          💾 Save Student
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Results Link -->
+  <div class="mt-6 text-center">
+    <a th:href="@{/results/{studentId}(studentId=${student.id})}"
+       class="text-indigo-700 font-medium hover:underline">
+      📊 View Student Results
+    </a>
+    <a th:href="@{/tests/start/{id}(id=${student.id})}" class="hover:text-yellow-300">Start Test</a>
+  </div>
+</main>
+
+</body>
+</html>

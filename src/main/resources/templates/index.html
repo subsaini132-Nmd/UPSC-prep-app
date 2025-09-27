@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPSC Prep</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+<!-- Header -->
+<header class="bg-blue-700 text-white shadow-md">
+    <div class="max-w-5xl mx-auto flex justify-between items-center py-4 px-6">
+        <h1 class="text-2xl font-bold">📘 UPSC Prep App</h1>
+        <nav class="space-x-4">
+            <a href="/" class="hover:text-yellow-300">Home</a>
+            <a href="/students/list" class="hover:text-yellow-300">Students</a>
+
+        </nav>
+    </div>
+</header>
+
+<!-- Main content -->
+<main class="max-w-5xl mx-auto p-6">
+
+    <!-- Quick Links Section -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+        <a href="/students/list" class="bg-white shadow-md rounded-xl p-6 flex flex-col items-center hover:bg-blue-50">
+            <span class="text-4xl">👩‍🎓</span>
+            <h2 class="text-lg font-semibold mt-2">View Students</h2>
+        </a>
+
+        <a href="/students/new" class="bg-white shadow-md rounded-xl p-6 flex flex-col items-center hover:bg-blue-50">
+            <span class="text-4xl">➕</span>
+            <h2 class="text-lg font-semibold mt-2">Add Student</h2>
+        </a>
+
+        <a href="/questions/add" class="bg-white shadow-md rounded-xl p-6 flex flex-col items-center hover:bg-blue-50">
+            <span class="text-4xl">📝</span>
+            <h2 class="text-lg font-semibold mt-2">Add Question</h2>
+        </a>
+    </section>
+
+    <!-- Register Form -->
+    <section class="mt-10 bg-white p-8 rounded-2xl shadow-md">
+        <h2 class="text-xl font-bold mb-6">🧑‍💻 Register Student</h2>
+        <form action="/students/register" method="post" class="space-y-4">
+            <div>
+                <label class="block font-medium">Student ID</label>
+                <input type="text" name="id" class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div>
+                <label class="block font-medium">Name</label>
+                <input type="text" name="name" class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500">
+            </div>
+            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+                Register
+            </button>
+        </form>
+    </section>
+
+    <!-- Footer Links -->
+    <section class="mt-8 text-center">
+        <a href="/" class="text-gray-700 hover:underline">Back to Home</a>
+    </section>
+
+</main>
+
+</body>
+</html>

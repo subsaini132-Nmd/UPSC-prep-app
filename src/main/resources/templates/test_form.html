@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Take Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+<!-- Header -->
+<header class="bg-indigo-700 text-white shadow-md">
+    <div class="max-w-5xl mx-auto py-4 px-6 flex justify-between items-center">
+        <h1 class="text-xl font-bold" th:text="'Test: ' + ${subject.name}">Test</h1>
+        <a href="/" class="bg-yellow-400 text-black px-3 py-1 rounded-md font-medium hover:bg-yellow-500">
+            🏠 Back to Home
+        </a>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main class="max-w-5xl mx-auto p-6 space-y-6">
+
+    <form th:action="@{/tests/submit/{studentId}/{subjectId}(studentId=${student.id},subjectId=${subject.id})}" method="post" class="space-y-6">
+
+        <div th:each="q, iterStat : ${questions}" class="bg-white shadow-md rounded-lg p-5 border">
+            <p class="font-semibold text-gray-800 mb-3" th:text="'Q' + (iterStat.index + 1) + ': ' + ${q.text}">Question Text</p>
+
+            <!-- Hidden Question ID -->
+            <input type="hidden" name="questionIds" th:value="${q.id}" />
+
+            <!-- Options -->
+            <div class="space-y-2">
+                <label class="flex items-center space-x-2">
+                    <input type="radio" th:name="'answers[' + ${iterStat.index} + ']'" value="A" class="form-radio text-indigo-600"/>
+                    <span th:text="'A. ' + ${q.optionA}">Option A</span>
+                </label>
+                <label class="flex items-center space-x-2">
+                    <input type="radio" th:name="'answers[' + ${iterStat.index} + ']'" value="B" class="form-radio text-indigo-600"/>
+                    <span th:text="'B. ' + ${q.optionB}">Option B</span>
+                </label>
+                <label class="flex items-center space-x-2">
+                    <input type="radio" th:name="'answers[' + ${iterStat.index} + ']'" value="C" class="form-radio text-indigo-600"/>
+                    <span th:text="'C. ' + ${q.optionC}">Option C</span>
+                </label>
+                <label class="flex items-center space-x-2">
+                    <input type="radio" th:name="'answers[' + ${iterStat.index} + ']'" value="D" class="form-radio text-indigo-600"/>
+                    <span th:text="'D. ' + ${q.optionD}">Option D</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="text-center">
+            <button type="submit" class="bg-indigo-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-indigo-700 shadow-md">
+                ✅ Submit Test
+            </button>
+        </div>
+
+    </form>
+</main>
+
+</body>
+</html>
